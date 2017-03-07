@@ -1,7 +1,7 @@
 // Karma configuration
 // Generated on Thu Feb 16 2017 12:39:30 GMT+0100 (W. Central Africa Standard Time)
 
-module.exports = function(config) {
+module.exports = (config) => {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -60,7 +60,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Google'],
+    browsers: ['Firefox'],
 
 
     // Continuous Integration mode
@@ -70,5 +70,5 @@ module.exports = function(config) {
     // Concurrency level
     // how many browser should be started simultaneous
     concurrency: Infinity
-  })
-}
+  });
+};

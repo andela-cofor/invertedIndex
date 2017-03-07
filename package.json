@@ -4,7 +4,7 @@
   "description": "user can create search through json files",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "karma start karma.conf.js",
     "lint": "./node_modules/.bin/eslint public/js/*.js"
   },
   "repository": {
@@ -33,8 +33,11 @@
     "karma": "^1.5.0",
     "karma-chrome-launcher": "^2.0.0",
     "karma-coverage": "^1.1.1",
+    "karma-coveralls": "^1.1.2",
     "karma-firefox-launcher": "^1.0.1",
     "karma-jasmine": "^1.1.0",
+    "karma-spec-reporter": "0.0.30",
+    "karma-verbose-reporter": "0.0.5",
     "nodemon": "^1.11.0",
     "vinyl-source-stream": "^1.1.0"
   },
