@@ -1,2 +1,3 @@
 spec/app-test.js
-
+public/js/eventManager.js
+public/js/invertedIndexutil.js
