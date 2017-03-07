@@ -8,6 +8,7 @@ window.onload = function() {
   const input = $('#file');
   const allFilesTile = invertedObj.allFilesTitle;
   $('#upload-btn').click(() => {
+    console.log(fileInput.files[0]);
       // if(invertedObj.allFiles(fileInput.file.name))
       console.log(fileInput.files[0].name);
       Object.keys(fileInput.files).forEach((file) => {

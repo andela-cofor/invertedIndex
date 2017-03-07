@@ -24,7 +24,6 @@ class InvertedIndex {
     Object.keys(object).forEach((titles) => {
       this.allFilesTitle.push(object[titles].title);
     });
-    console.log(this.allFilesTitle);
     this.allLength[fileName] = object.length;
     object.forEach((document, position) => {
       const words = document.text.toLowerCase().match(/\w+/g);
@@ -57,11 +56,11 @@ class InvertedIndex {
     if (filterName === 'All') {
       Object.keys(this.allFiles).forEach((keys) => {
         searchResultKey = {};
-        allSearchQuery.forEach((query) => {
-          searchResultKey[query] = { 0: false };
+        Object.keys(allSearchQuery).forEach((query) => {
+          searchResultKey[allSearchQuery[query]] = { 0: false };
           Object.keys(this.allFiles[keys]).forEach((key) => {
-            if (query === key) {
-              searchResultKey[query] = this.allFiles[keys][key];
+            if (allSearchQuery[query] === key) {
+              searchResultKey[allSearchQuery[query]] = this.allFiles[keys][key];
             }
           });
         });
@@ -69,11 +68,11 @@ class InvertedIndex {
       });
       return searchResult;
     }
-    allSearchQuery.forEach((query) => {
-      searchResultKey[query] = { 0: false };
+    Object.keys(allSearchQuery).forEach((query) => {
+      searchResultKey[allSearchQuery[query]] = { 0: false };
       Object.keys(this.allFiles[filterName]).forEach((key) => {
-        if (query === key) {
-          searchResultKey[query] = this.allFiles[filterName][key];
+        if (allSearchQuery[query] === key) {
+          searchResultKey[allSearchQuery[query]] = this.allFiles[filterName][key];
         }
       });
     });

@@ -17,15 +17,17 @@ class InvertedIndexUtil {
   }
   /**
    * File reader function
-   * @param {object} files passed in by the Validate function
+   * @param {object} file passed in by the Validate function
+   * @param {object} arg object passed
    * @returns {Boolean} return true or false for file structure
    */
   jsonFileReader(file, arg) {
+    console.log(file)
     let object = [];
     let object1 = [];
     try {
-      var reader = new FileReader();
-      reader.onload = function(e) {
+      let reader = new FileReader();
+      reader.onload = (e) => {
         object = JSON.parse(e.target.result);
         // console.log(object[0].title);
         document.getElementById('user-message1').innerHTML = '';
@@ -39,6 +41,8 @@ class InvertedIndexUtil {
           document.getElementById('user-message1').innerHTML = 'File Upload was successful';
           arg.createIndex(object, file.name);
           $('<option/>').val(file.name).html(file.name).appendTo('#sFile');
+          return true;
+          console.log(arg.index);
           return arg.index;
           // return true
         }

@@ -15,7 +15,7 @@ gulp.task("browserSync", function(){
 })
 
 gulp.task('browserify', () => {
-	browserify('./spec/upload_spec.js', { debug: true }).transform(babel, {presets: ["es2015"]})
+	browserify('./spec/createIndexTest.js', { debug: true }).transform(babel, {presets: ["es2015"]})
 	.bundle()
         .pipe(source('app-test.js'))
         .pipe(gulp.dest('./spec'))
