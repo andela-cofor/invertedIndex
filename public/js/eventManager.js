@@ -1,3 +1,4 @@
+/* eslint-disable */
 window.onload = function() {
   const invertedObj = new InvertedIndex();
   const fileInput = document.getElementById('file');
@@ -73,7 +74,7 @@ window.onload = function() {
       bookName, viewIndexLength[bookName], allFilesTile);
     }
   }); 
-  
+
   $('#btn-search').click(() => {
     deleteTable();
     document.getElementById('user-message').innerHTML = '';
