@@ -2,3 +2,4 @@
 lib
 coverage
 /lib-cov
+/spec/app-tests.js
