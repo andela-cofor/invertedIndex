@@ -1,5 +1,4 @@
 const invertedObject = new InvertedIndex();
-const invertedUtil = new InvertedIndexUtil();
 
 // const InvertedIndex = require('../public/js/invertedIndex');
 // const InvertedIndexUtil = require('../public/js/InvertedIndexUtil');
@@ -11,16 +10,6 @@ const book = require('./News');
 
 
 describe('Inverted Index test Suit', () => {
-  describe('Testing Inverted index Util methods', () => {
-    it('Should return false for wrong book format ', () => {
-      expect(invertedUtil.jsonFileReader(wrongBook)).toBeFalsy();
-    });
-
-    it('Should return false for wrong length of book', () => {
-      expect(invertedUtil.jsonFileReader(zeroLength)).toBeFalsy();
-    });
-  });
-
   describe('Testing Inverted index create method', () => {
     const outputObject = invertedObject.createIndex(correctBook, 'correctBook');
     const outputObject2 = invertedObject.createIndex(book, 'book');
