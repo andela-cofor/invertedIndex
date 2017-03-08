@@ -63,9 +63,6 @@ describe('Inverted Index test Suit', () => {
     const searchObject2 = invertedObject.searchFiles(['party'], 'All');
     const searchObject3 = invertedObject.searchFiles(['alice'], 'correctBook');
     const searchObject4 = invertedObject.searchFiles(['party'], 'book');
-    console.log(searchObject3);
-    console.log(searchObject);
-    // console.log(searchObject2.book);
 
     it('should return Object as object type of searchObject for All', () => {
       expect(searchObject instanceof Object).toBeTruthy();
