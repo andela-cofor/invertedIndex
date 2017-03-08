@@ -80,5 +80,3 @@ class InvertedIndex {
     return searchResult;
   }
 }
-
-// module.exports = InvertedIndex();

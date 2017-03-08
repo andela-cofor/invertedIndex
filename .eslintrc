@@ -4,7 +4,8 @@
   "env": {
     "node": true,
     "es6": true,
-    "mocha": true
+    "mocha": true,
+    "esversion": 6
   },
   "globals": {
     "require": true
@@ -14,6 +15,7 @@
   },
   "rules": {
     "one-var": 0,
+    "esversion": 6,
     "one-var-declaration-per-line": 0,
     "new-cap": 0,
     "no-unused-vars": 0,
