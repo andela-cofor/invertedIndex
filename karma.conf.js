@@ -13,7 +13,7 @@ module.exports = (config) => {
     frameworks: ['jasmine'],
 
     // list of files / patterns to load in the browser
-    files: ['public/js/invertedIndex.js', 'public/js/InvertedIndexUtil.js', 'spec/app-test.js'
+    files: ['public/js/invertedIndex.js', 'spec/app-test.js'
     ],
 
 
