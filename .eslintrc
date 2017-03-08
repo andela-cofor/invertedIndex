@@ -10,7 +10,7 @@
     "require": true
   },
   "ecmaFeatures": {
-    "esversion":6,
+    "es6": true,
     "arrowFunctions": true,
     "blockBindings": true,
     "classes": true,
