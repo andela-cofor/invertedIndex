@@ -1,18 +1,18 @@
-const chai = require('chai');
+const invertedObject = new InvertedIndex();
+const invertedUtil = new InvertedIndexUtil();
 
-const expect = chai.expect;
-
+// const InvertedIndex = require('../public/js/invertedIndex');
+// const InvertedIndexUtil = require('../public/js/InvertedIndexUtil');
 const correctBook = require('./book.json');
 const wrongBook = require('./wrongFormat.json');
 const zeroLength = require('./length.json');
 const book = require('./News');
 
-const invertedObject = new InvertedIndex();
-const invertedUtil = new InvertedIndexUtil();
+
 
 describe('Inverted Index test Suit', () => {
   describe('Testing Inverted index Util methods', () => {
-    it('Should return false for wrong book format', () => {
+    it('Should return false for wrong book format ', () => {
       expect(invertedUtil.jsonFileReader(wrongBook)).toBeFalsy();
     });
 

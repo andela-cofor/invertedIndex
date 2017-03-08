@@ -12,9 +12,8 @@ module.exports = (config) => {
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: ['jasmine'],
 
-
     // list of files / patterns to load in the browser
-    files: ['public/js/*.js', 'spec/app-test.js'
+    files: ['public/js/invertedIndex.js', 'public/js/InvertedIndexUtil.js', 'spec/app-test.js'
     ],
 
 
@@ -26,7 +25,7 @@ module.exports = (config) => {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-        'public/js/invertedIndex.js': "coverage"
+        'public/js/*.js': "coverage"
     },
 
     coverageReporter :{
@@ -38,7 +37,7 @@ module.exports = (config) => {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress', 'coverage'],
+    reporters: ['progress', 'spec', 'coverage', 'coveralls', 'verbose'],
 
 
     // web server port
