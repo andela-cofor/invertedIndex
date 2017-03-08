@@ -8,9 +8,6 @@ window.onload = function() {
   const input = $('#file');
   const allFilesTile = invertedObj.allFilesTitle;
   $('#upload-btn').click(() => {
-    console.log(fileInput.files[0]);
-      // if(invertedObj.allFiles(fileInput.file.name))
-      console.log(fileInput.files[0].name);
       Object.keys(fileInput.files).forEach((file) => {
         if(fileInput.files[file].type === 'application/json' && fileInput.files[file].size < 1) {
           wrongFiles.push(fileInput.files.name);
@@ -36,7 +33,6 @@ window.onload = function() {
       let viewIndexFiles = invertedObj.allFiles;
       let viewIndexLength = invertedObj.allLength;
       if (bookName === 'All') {
-        // console.log(invertedObj.allFiles)
         Object.keys(viewIndexFiles).forEach((keys) => {
           invertedIndexUtilObj.populateTable(viewIndexFiles[keys], keys, viewIndexLength[keys], allFilesTile);
         });
@@ -54,7 +50,6 @@ window.onload = function() {
     const wordArray = searchstring.toLowerCase().match(/\w+/g);
     const viewIndexLength = invertedObj.allLength;
     const searchResult = invertedObj.searchFiles(wordArray, filterName);
-      // console.log(searchResult);
     if (!searchstring) {
       document.getElementById('user-message').innerHTML = 'Type in a search';
     } else if (filterName === 'All') {

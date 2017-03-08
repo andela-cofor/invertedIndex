@@ -28,7 +28,6 @@ class InvertedIndexUtil {
       let reader = new FileReader();
       reader.onload = (e) => {
         object = JSON.parse(e.target.result);
-        // console.log(object[0].title);
         document.getElementById('user-message1').innerHTML = '';
         document.getElementById('user-message').innerHTML = '';
         if (object[0].title === undefined) {
@@ -41,7 +40,6 @@ class InvertedIndexUtil {
           arg.createIndex(object, file.name);
           $('<option/>').val(file.name).html(file.name).appendTo('#sFile');
           return true;
-          console.log(arg.index);
           return arg.index;
           // return true
         }
@@ -58,9 +56,6 @@ class InvertedIndexUtil {
    * @return {any} populate page with data
    */
   populateTable(object, fileName, columnLength, allFilesTitle) {
-    // const invertedObj = new InvertedIndex();
-    console.log(allFilesTitle);
-    
     let indexDiv = '<br><br><br><div class = "indexDiv"><h2 id = "titleHeader">' +
     fileName + '</h2>';
     indexDiv += '<table class = "responstable">';
