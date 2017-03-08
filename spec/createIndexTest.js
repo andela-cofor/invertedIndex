@@ -1,6 +1,3 @@
-const InvertedIndex = require('../public/js/invertedIndex');
-const InvertedIndexUtil = require('../public/js/InvertedIndexUtil');
-
 const chai = require('chai');
 
 const expect = chai.expect;
