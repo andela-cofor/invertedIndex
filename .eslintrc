@@ -4,18 +4,30 @@
   "env": {
     "node": true,
     "es6": true,
-    "mocha": true,
-    "esversion": 6
+    "mocha": true
   },
   "globals": {
     "require": true
   },
   "ecmaFeatures": {
-    "arrowFunctions": true
+    "arrowFunctions": true,
+    "blockBindings": true,
+    "classes": true,
+    "defaultParams": true,
+    "destructuring": true,
+    "forOf": true,
+    "generators": false,
+    "modules": true,
+    "objectLiteralComputedProperties": true,
+    "objectLiteralDuplicateProperties": false,
+    "objectLiteralShorthandMethods": true,
+    "objectLiteralShorthandProperties": true,
+    "spread": true,
+    "superInFunctions": true,
+    "templateStrings": true
   },
   "rules": {
     "one-var": 0,
-    "esversion": 6,
     "one-var-declaration-per-line": 0,
     "new-cap": 0,
     "no-unused-vars": 0,
