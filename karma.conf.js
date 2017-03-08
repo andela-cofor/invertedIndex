@@ -1,7 +1,7 @@
 // Karma configuration
 // Generated on Thu Feb 16 2017 12:39:30 GMT+0100 (W. Central Africa Standard Time)
 
-module.exports = function(config) {
+module.exports = (config) => {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -12,9 +12,8 @@ module.exports = function(config) {
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: ['jasmine'],
 
-
     // list of files / patterns to load in the browser
-    files: ['public/js/*.js', 'spec/*.js'
+    files: ['public/js/invertedIndex.js', 'public/js/InvertedIndexUtil.js', 'spec/app-test.js'
     ],
 
 
@@ -26,7 +25,7 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-        'public/js/*.js': ['coverage']
+        'public/js/*.js': "coverage"
     },
 
     coverageReporter :{
@@ -38,7 +37,7 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress', 'coverage'],
+    reporters: ['progress', 'spec', 'coverage', 'coveralls', 'verbose'],
 
 
     // web server port
@@ -57,10 +56,19 @@ module.exports = function(config) {
     // enable / disable watching file and executing tests whenever any file changes
     autoWatch: true,
 
+    customLaunchers: {
+      Chrome_travis_ci: {
+        base: 'Chrome',
+        flags: ['--no-sandbox']
+      }
+    },
 
-    // start these browsers
-    // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Firefox'],
+    // start these browsers depending on our enviroment
+    browsers: process.env.TRAVIS ? ['Chrome_travis_ci'] : ['Chrome'],
+
+    // // start these browsers
+    // // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
+    // browsers: ['Chrome'],
 
 
     // Continuous Integration mode
@@ -70,5 +78,5 @@ module.exports = function(config) {
     // Concurrency level
     // how many browser should be started simultaneous
     concurrency: Infinity
-  })
-}
+  });
+};
