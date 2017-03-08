@@ -3,7 +3,6 @@
   "extends": "airbnb-base",
   "env": {
     "node": true,
-    "esversion":6,
     "es6": true,
     "mocha": true
   },
@@ -11,6 +10,7 @@
     "require": true
   },
   "ecmaFeatures": {
+    "esversion":6,
     "arrowFunctions": true,
     "blockBindings": true,
     "classes": true,
