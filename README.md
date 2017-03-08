@@ -1,5 +1,6 @@
 
 [![Build Status](https://travis-ci.org/andela-cofor/invertedIndex.svg?branch=development)](https://travis-ci.org/andela-cofor/invertedIndex)
+[![Coverage Status](https://coveralls.io/repos/github/andela-cofor/invertedIndex/badge.svg?branch=transfer)](https://coveralls.io/github/andela-cofor/invertedIndex?branch=transfer)
 [![Code Climate](https://codeclimate.com/github/andela-cofor/invertedIndex/badges/gpa.svg)](https://codeclimate.com/github/andela-cofor/invertedIndex)
 
 # **INVERTED-INDEX**
