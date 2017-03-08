@@ -4,12 +4,13 @@
   "env": {
     "node": true,
     "es6": true,
-    "mocha": true
+    "mocha": true,
   },
   "globals": {
     "require": true
   },
   "ecmaFeatures": {
+    "ecmaVersion": 6,
     "arrowFunctions": true,
     "blockBindings": true,
     "classes": true,
