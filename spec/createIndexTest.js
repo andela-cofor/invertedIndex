@@ -1,4 +1,10 @@
-/* eslint-disable no-undef*/
+const InvertedIndex = require('../public/js/invertedIndex');
+const InvertedIndexUtil = require('../public/js/InvertedIndexUtil');
+
+const chai = require('chai');
+
+const expect = chai.expect;
+
 const correctBook = require('./book.json');
 const wrongBook = require('./wrongFormat.json');
 const zeroLength = require('./length.json');
@@ -9,7 +15,7 @@ const invertedUtil = new InvertedIndexUtil();
 
 describe('Inverted Index test Suit', () => {
   describe('Testing Inverted index Util methods', () => {
-    it('Should return false for wrong book format name and value rather than titile and text', () => {
+    it('Should return false for wrong book format', () => {
       expect(invertedUtil.jsonFileReader(wrongBook)).toBeFalsy();
     });
 
