@@ -3,6 +3,7 @@
   "extends": "airbnb-base",
   "env": {
     "node": true,
+    "esversion":6,
     "es6": true,
     "mocha": true
   },
