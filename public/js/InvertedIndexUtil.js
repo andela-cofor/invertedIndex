@@ -22,7 +22,6 @@ class InvertedIndexUtil {
    * @returns {Boolean} return true or false for file structure
    */
   jsonFileReader(file, arg) {
-    console.log(file)
     let object = [];
     let object1 = [];
     try {
