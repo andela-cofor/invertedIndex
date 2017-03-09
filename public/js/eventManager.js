@@ -6,6 +6,8 @@ window.onload = function() {
   const files = [];
   const input = $('#file');
   const allFilesTile = invertedObj.allFilesTitle;
+  const dropDownNames = [];
+  const register = [];
 
   /**
    * File reader function
@@ -26,13 +28,15 @@ window.onload = function() {
           document.getElementById('user-message').innerHTML = 'Invalid Json file format';
           return false;
         }
-        if (object[0].title !== undefined) {
+        if (object[0].title !== undefined && register.indexOf(file.name) === -1) {
           document.getElementById('user-message1').innerHTML = 'File Upload was successful';
           arg.createIndex(object, file.name);
+          register.push(file.name);
+          dropDownNames.push(file);
           populateDropDown(file.name);
           return true;
           return arg.index;
-        }
+        } document.getElementById('user-message').innerHTML = 'File Exist';
       }
       reader.readAsText(file);
     } catch (error) {
@@ -49,7 +53,7 @@ window.onload = function() {
           = wrongFiles + wrnMessage;
         } if (fileInput.files[file].type === 'application/json') {
           files.push(fileInput.files[file]);
-          jsonFileReader(fileInput.files[0], invertedObj);
+          jsonFileReader(fileInput.files[file], invertedObj);
         } else if (fileInput.files[file].name !== 'application/json') {
           wrongFiles.push(fileInput.files.name);
           document.getElementById('user-message').innerHTML
@@ -72,9 +76,9 @@ window.onload = function() {
       populateTable(viewIndexFiles[bookName],
       bookName, viewIndexLength[bookName], allFilesTile);
     }
-  }); 
+  });
 
-  $('#btn-search').click(() => {
+  $("#search").keyup(function(){
     deleteTable();
     document.getElementById('user-message').innerHTML = '';
     document.getElementById('user-message1').innerHTML = '';
@@ -140,5 +144,6 @@ window.onload = function() {
   const populateDropDown = (fileName) => {
     let object = fileName;
     $('<option/>').val(object).html(object).appendTo('#sFile');
+    
   }
 };
