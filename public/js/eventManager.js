@@ -36,7 +36,7 @@ window.onload = function() {
           populateDropDown(file.name);
           return true;
           return arg.index;
-        } document.getElementById('user-message').innerHTML = 'File uploaded';
+        } document.getElementById('user-message').innerHTML = 'File Exist';
       }
       reader.readAsText(file);
     } catch (error) {
@@ -53,7 +53,7 @@ window.onload = function() {
           = wrongFiles + wrnMessage;
         } if (fileInput.files[file].type === 'application/json') {
           files.push(fileInput.files[file]);
-          jsonFileReader(fileInput.files[0], invertedObj);
+          jsonFileReader(fileInput.files[file], invertedObj);
         } else if (fileInput.files[file].name !== 'application/json') {
           wrongFiles.push(fileInput.files.name);
           document.getElementById('user-message').innerHTML
