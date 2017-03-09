@@ -72,9 +72,9 @@ window.onload = function() {
       populateTable(viewIndexFiles[bookName],
       bookName, viewIndexLength[bookName], allFilesTile);
     }
-  }); 
-
-  $('#btn-search').click(() => {
+  });
+  
+  $("#search").keyup(function(){
     deleteTable();
     document.getElementById('user-message').innerHTML = '';
     document.getElementById('user-message1').innerHTML = '';
