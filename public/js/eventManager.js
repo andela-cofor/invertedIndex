@@ -6,8 +6,8 @@ window.onload = function() {
   const files = [];
   const input = $('#file');
   const allFilesTile = invertedObj.allFilesTitle;
-  let dropDownNames = [];
-  let register = [];
+  const dropDownNames = [];
+  const register = [];
 
   /**
    * File reader function
