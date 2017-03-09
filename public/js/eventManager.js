@@ -6,8 +6,8 @@ window.onload = function() {
   const files = [];
   const input = $('#file');
   const allFilesTile = invertedObj.allFilesTitle;
-  const dropDownNames = [];
-  const register = [];
+  let dropDownNames = [];
+  let register = [];
 
   /**
    * File reader function
@@ -32,7 +32,7 @@ window.onload = function() {
           document.getElementById('user-message1').innerHTML = 'File Upload was successful';
           arg.createIndex(object, file.name);
           register.push(file.name);
-          dropDownNames.push(file)
+          dropDownNames.push(file);
           populateDropDown(file.name);
           return true;
           return arg.index;
