@@ -7,6 +7,7 @@ window.onload = function() {
   const input = $('#file');
   const allFilesTile = invertedObj.allFilesTitle;
   const dropDownNames = [];
+  const register = [];
 
   /**
    * File reader function
@@ -27,14 +28,15 @@ window.onload = function() {
           document.getElementById('user-message').innerHTML = 'Invalid Json file format';
           return false;
         }
-        if (object[0].title !== undefined) {
+        if (object[0].title !== undefined && register.indexOf(file.name) === -1) {
           document.getElementById('user-message1').innerHTML = 'File Upload was successful';
           arg.createIndex(object, file.name);
-          dropDownNames.push(file.name);
+          register.push(file.name);
+          dropDownNames.push(file)
           populateDropDown(file.name);
           return true;
           return arg.index;
-        }
+        } document.getElementById('user-message').innerHTML = 'File uploaded';
       }
       reader.readAsText(file);
     } catch (error) {
