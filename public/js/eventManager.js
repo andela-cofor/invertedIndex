@@ -6,6 +6,7 @@ window.onload = function() {
   const files = [];
   const input = $('#file');
   const allFilesTile = invertedObj.allFilesTitle;
+  const dropDownNames = [];
 
   /**
    * File reader function
@@ -29,6 +30,7 @@ window.onload = function() {
         if (object[0].title !== undefined) {
           document.getElementById('user-message1').innerHTML = 'File Upload was successful';
           arg.createIndex(object, file.name);
+          dropDownNames.push(file.name);
           populateDropDown(file.name);
           return true;
           return arg.index;
@@ -73,7 +75,7 @@ window.onload = function() {
       bookName, viewIndexLength[bookName], allFilesTile);
     }
   });
-  
+
   $("#search").keyup(function(){
     deleteTable();
     document.getElementById('user-message').innerHTML = '';
@@ -140,5 +142,6 @@ window.onload = function() {
   const populateDropDown = (fileName) => {
     let object = fileName;
     $('<option/>').val(object).html(object).appendTo('#sFile');
+    
   }
 };
