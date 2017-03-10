@@ -1,3 +1,4 @@
+/* eslint-disable */
 window.onload = function() {
   const invertedObj = new InvertedIndex();
   const fileInput = document.getElementById('file');
