@@ -15,7 +15,7 @@ class InvertedIndex {
   }
   /**
    * Gets Indexes
-   * @param {jsonObj} object receives json object
+   * @param {jsonObj} BookObject receives json object
    * @param {string} fileName of the books
    * @return {object} returns an object of Indexes
    */
