@@ -32,9 +32,9 @@ class InvertedIndex {
             this.allIndex[word][position] = true;
           }
         } else {
-          const oneIndex = {};
-          oneIndex[position] = true;
-          this.allIndex[word] = oneIndex;
+          const wordIndex = {};
+          wordIndex[position] = true;
+          this.allIndex[word] = wordIndex;
         }
       });
     });

@@ -138,8 +138,8 @@ window.onload = function() {
    * function
    */
   const deleteTable = () => {
-      $("#table-holder").remove();
-      $('figure').append('<div class="display table" id="table-holder" overflow:auto;></div>');
+      $('#table-holder').remove();
+      $('figure').append('<div class="display table" id="table-holder"></div>');
   }
 
   const populateDropDown = (fileName) => {
