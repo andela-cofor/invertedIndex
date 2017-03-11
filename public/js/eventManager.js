@@ -69,12 +69,13 @@ window.onload = function() {
     const bookName = $('#sFile').val();
     document.getElementById('user-message').innerHTML = '';
     document.getElementById('user-message1').innerHTML = '';
-    let viewIndexFiles = invertedObj.allFiles;
+    // let viewIndexFiles = invertedObj.allFiles;
     let viewIndexLength = invertedObj.allLength;
+    let viewAllIndexedFiles = invertedObj.getAllIndecies(bookName);
     if (bookName === 'All') {
       document.getElementById('user-message').innerHTML = 'No book selected';
     } else {
-      populateTable(viewIndexFiles[bookName],
+      populateTable(viewAllIndexedFiles,
       bookName, viewIndexLength[bookName], allFilesTile);
     }
   });

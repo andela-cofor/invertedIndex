@@ -32,7 +32,6 @@ class InvertedIndex {
    * @return {object} returns an object of Indexes
    */
   createIndex(BookObject, bookName) {
-
     this.sanitizer(BookObject);
     this.allLength[bookName] = BookObject.length;
     BookObject.forEach((document, position) => {
@@ -54,6 +53,17 @@ class InvertedIndex {
     this.allFiles[bookName] = this.allIndex;
     this.allIndex = {};
     return this.allFiles[bookName];
+  }
+
+  /**
+   * Get all Indecies
+   * @param {string} bookName name of the individaul book
+   * @returns {Object} allIndicies returns all indexed allFiles
+   */
+  getAllIndecies(bookName) {
+    if (bookName !== undefined) {
+      return this.allFiles[bookName];
+    } return false;
   }
 
   /**
