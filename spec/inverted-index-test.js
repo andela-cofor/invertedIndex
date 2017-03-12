@@ -5,9 +5,11 @@ const correctBook = require('./book.json');
 const wrongBook = require('./wrongFormat.json');
 const zeroLength = require('./length.json');
 const book = require('./News');
+const emptyFile = require('./empty');
+const rightFile = require('./rightBook');
 
 describe('Inverted Index test Suit', () => {
-  describe('Testing Inverted index create method', () => {
+  describe('Inverted index create method', () => {
     const result = invertedObject.createIndex(correctBook, 'correctBook');
     const result2 = invertedObject.createIndex(book, 'book');
 
@@ -51,7 +53,7 @@ describe('Inverted Index test Suit', () => {
       const searchResult3 = invertedObject.searchFiles(['alice'], 'correctBook');
       const searchResult4 = invertedObject.searchFiles(['party'], 'book');
 
-      it('should return Object type of search result', () => {
+      it('should return Object as type of search result', () => {
         expect(searchResult instanceof Object).toBeTruthy();
       });
 
@@ -113,16 +115,28 @@ describe('Inverted Index test Suit', () => {
     });
 
     describe('the inverted index getIndicies method', () => {
-      const allFiles = invertedObject.allFiles;
       const getIndeciesFile = invertedObject.getAllIndecies('correctBook')
       const getIndeciesFile2 = invertedObject.getAllIndecies()
-      console.log(getIndeciesFile.alice)
       it('should return object as typeof getIndeciesFile', () => {
         expect(getIndeciesFile instanceof Object).toBeTruthy();
       }); 
 
       it('should return false for getAllIndecies2', () => {
         expect(getIndeciesFile2).toBeFalsy();
+      }); 
+    });
+
+    describe('the inverted index validate method', () => {
+
+      const emptyJsonFile = invertedObject.validateFileFunc(emptyFile);
+      const rightBook = invertedObject.validateFileFunc(correctBook[0]);
+      
+      it('should return false for an empty json file', () => {
+        expect(emptyJsonFile).toBeFalsy();
+      });
+
+      it('should return Object as type of rightBook', () => {
+        expect(rightBook instanceof Object).toBeTruthy();
       }); 
     });
   });
