@@ -71,11 +71,25 @@ window.onload = function() {
     if (bookName === 'All') {
       document.getElementById('user-message').innerHTML = 'No file selected';
     } else {
-      invertedObj.createIndex(passedFiles[bookName], bookName);
+      // invertedObj.createIndex(passedFiles[bookName], bookName);
+      // let allIndicies = invertedObj.getAllIndecies(bookName);
+      // let bookLength = invertedObj.allLength[bookName]
+      // let allBooksTitles = invertedObj.allFilesTitle
+      // populateTable(allIndicies, bookName, bookLength, allBooksTitles);
       let allIndicies = invertedObj.getAllIndecies(bookName);
-      let bookLength = invertedObj.allLength[bookName]
-      let allBooksTitles = invertedObj.allFilesTitle
-      populateTable(allIndicies, bookName, bookLength, allBooksTitles);
+      // console.log(allIndicies);
+      if(allIndicies === undefined) {
+        invertedObj.createIndex(passedFiles[bookName], bookName);
+        let allIndicies = invertedObj.getAllIndecies(bookName);
+        let bookLength = invertedObj.allLength[bookName]
+        let allBooksTitles = invertedObj.allFilesTitle
+        populateTable(allIndicies, bookName, bookLength, allBooksTitles);
+      } else {
+        document.getElementById('user-message').innerHTML = file.name + ' Index created already';
+        let bookLength = invertedObj.allLength[bookName]
+        let allBooksTitles = invertedObj.allFilesTitle
+        populateTable(allIndicies, bookName, bookLength, allBooksTitles);
+      }
     }
   });
 
