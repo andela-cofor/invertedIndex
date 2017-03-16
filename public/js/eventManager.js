@@ -24,7 +24,7 @@ window.onload = function() {
       let reader = new FileReader();
       reader.onload = (e) => {
         readFile = JSON.parse(e.target.result);
-        validatedFile = invertedObj.validateFileFunc(readFile[0]);
+        validatedFile = invertedObj.validateFile(readFile[0]);
         document.getElementById('user-message').innerHTML = '';
         document.getElementById('user-message1').innerHTML = '';
         if(validatedFile !== false) {
@@ -71,16 +71,10 @@ window.onload = function() {
     if (bookName === 'All') {
       document.getElementById('user-message').innerHTML = 'No file selected';
     } else {
-      // invertedObj.createIndex(passedFiles[bookName], bookName);
-      // let allIndicies = invertedObj.getAllIndecies(bookName);
-      // let bookLength = invertedObj.allLength[bookName]
-      // let allBooksTitles = invertedObj.allFilesTitle
-      // populateTable(allIndicies, bookName, bookLength, allBooksTitles);
-      let allIndicies = invertedObj.getAllIndecies(bookName);
-      // console.log(allIndicies);
+      let allIndicies = invertedObj.getIndex(bookName);
       if(allIndicies === undefined) {
         invertedObj.createIndex(passedFiles[bookName], bookName);
-        let allIndicies = invertedObj.getAllIndecies(bookName);
+        let allIndicies = invertedObj.getIndex(bookName);
         let bookLength = invertedObj.allLength[bookName]
         let allBooksTitles = invertedObj.allFilesTitle
         populateTable(allIndicies, bookName, bookLength, allBooksTitles);
