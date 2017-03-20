@@ -24,7 +24,7 @@ window.onload = function() {
       let reader = new FileReader();
       reader.onload = (e) => {
         readFile = JSON.parse(e.target.result);
-        validatedFile = invertedObj.validateFile(readFile[0]);
+        validatedFile = invertedObj.isValid(readFile[0]);
         document.getElementById('user-message').innerHTML = '';
         document.getElementById('user-message1').innerHTML = '';
         if(validatedFile !== false) {
