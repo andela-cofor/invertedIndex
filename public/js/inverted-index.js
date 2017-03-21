@@ -20,9 +20,12 @@ class InvertedIndex {
    * @returns {Boolean} returns true and false
    */
   isValid(fileContent) {
-    this.title = fileContent.title;
-    this.text = fileContent.text;
-    return (this.title !== undefined && this.text !== undefined);
+    console.log(fileContent);
+    if (fileContent !== undefined) {
+      this.title = fileContent.title;
+      this.text = fileContent.text;
+      return (this.title !== undefined && this.text !== undefined);
+    } return false;
   }
 
   /**
