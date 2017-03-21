@@ -23,7 +23,11 @@ window.onload = function() {
     try {
       let reader = new FileReader();
       reader.onload = (e) => {
-        readFile = JSON.parse(e.target.result);
+        try {
+          readFile = JSON.parse(e.target.result);
+        } catch (error) {
+          document.getElementById('user-message').innerHTML = file.name + ' is an invalid JSON file format';
+        }
         validatedFile = invertedObj.isValid(readFile[0]);
         document.getElementById('user-message').innerHTML = '';
         document.getElementById('user-message1').innerHTML = '';
@@ -42,8 +46,9 @@ window.onload = function() {
       }
       reader.readAsText(file);
     } catch (error) {
-      return false;
+      console.log(error);
       document.getElementById('user-message').innerHTML = file.name + ' is an invalid file format';
+      return false;
     }
   };
 
