@@ -29,7 +29,6 @@ window.onload = function() {
           document.getElementById('user-message').innerHTML = file.name + ' is an invalid JSON file format';
         }
         validatedFile = invertedObj.isValid(readFile[0]);
-        console.log(validatedFile);
         document.getElementById('user-message').innerHTML = '';
         document.getElementById('user-message1').innerHTML = '';
         if(validatedFile !== false) {
@@ -47,7 +46,6 @@ window.onload = function() {
       }
       reader.readAsText(file);
     } catch (error) {
-      console.log(error);
       document.getElementById('user-message').innerHTML = file.name + ' is an invalid file format';
       return false;
     }

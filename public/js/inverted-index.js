@@ -20,7 +20,6 @@ class InvertedIndex {
    * @returns {Boolean} returns true and false
    */
   isValid(fileContent) {
-    console.log(fileContent);
     if (fileContent !== undefined) {
       this.title = fileContent.title;
       this.text = fileContent.text;
