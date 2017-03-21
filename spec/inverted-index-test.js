@@ -1,12 +1,11 @@
 const invertedIndex = new InvertedIndex();
 
-
-const Book = require('./book.json');
+const book = require('./book.json');
 const News = require('./News');
 const empty = require('./empty');
 
 describe('Inverted index create method', () => {
-  const result = invertedIndex.createIndex(Book, 'Book');
+  const result = invertedIndex.createIndex(book, 'book');
   const result2 = invertedIndex.createIndex(News, 'News');
 
   it('should return Object as typeof result', () => {
@@ -42,14 +41,14 @@ describe('Inverted index create method', () => {
       party: { 0: true, 4: true }
     }));
   });
-  
+
   describe('The inverted index search method', () => {
     const searchForAliceInAllFiles = invertedIndex
     .searchFiles(['alice'], 'All');
     const searchForPartyInAllFiles = invertedIndex
     .searchFiles(['party'], 'All');
     const searchForAliceInBook = invertedIndex
-    .searchFiles(['alice'], 'Book');
+    .searchFiles(['alice'], 'book');
     const searchForPartyInNews = invertedIndex
     .searchFiles(['party'], 'News');
 
@@ -57,86 +56,88 @@ describe('Inverted index create method', () => {
       expect(searchForAliceInAllFiles instanceof Object).toBeTruthy();
     });
 
-    it('should match searchForAliceInAllFiles with alice: { 0: true }', 
+    it('should match searchForAliceInAllFiles with alice: { 0: true }',
     () => {
-      expect(searchForAliceInAllFiles.Book).toEqual(jasmine.objectContaining({
+      expect(searchForAliceInAllFiles.book).toEqual(jasmine.objectContaining({
         alice: { 0: true }
       }));
     });
 
     it('should match searchForAliceInAllFiles with alice: { 0: false }', () => {
-        expect(searchForAliceInAllFiles.Book).not.toEqual(jasmine.objectContaining({
-          alice: { 0: false }
-        }));
+      expect(searchForAliceInAllFiles.book).not
+      .toEqual(jasmine.objectContaining({
+        alice: { 0: false }
+      }));
     });
-    
-    it('should matchsearchForPartyInAllFiles with party: { 0: true, 5: true }', () => {
+
+    it('should matchsearchForPartyInAllFiles with party: { 0: true, 5: true }',
+    () => {
       expect(searchForPartyInAllFiles.News).toEqual(jasmine.objectContaining({
         party: { 0: true, 5: true }
       }));
     });
 
-    it('should match searchForPartyInAllFiles with party: { 0: true, 1: true }', 
+    it('should match searchForPartyInAllFiles with party: { 0: true, 1: true }',
       () => {
-        expect(searchForPartyInAllFiles.book).not.toEqual(jasmine.objectContaining({
+        expect(searchForPartyInAllFiles.book).not
+        .toEqual(jasmine.objectContaining({
           party: { 0: true, 1: true }
-      }));
-    });
+        }));
+      });
 
-    it('should return Object as type of searchResult3', 
+    it('should return Object as type of searchResult3',
       () => {
-      expect(searchForAliceInBook instanceof Object).toBeTruthy();
-    });
+        expect(searchForAliceInBook instanceof Object).toBeTruthy();
+      });
 
     it('should match searchForAliceInBook with alice: { 0: true }', () => {
-      expect(searchForAliceInBook.Book).toEqual(jasmine.objectContaining({
+      expect(searchForAliceInBook.book).toEqual(jasmine.objectContaining({
         alice: { 0: true }
       }));
     });
 
-    it('should match searchForAliceInBook with alice: { 0: false }', 
+    it('should match searchForAliceInBook with alice: { 0: false }',
       () => {
-      expect(searchForAliceInBook.Book).not.toEqual(jasmine.objectContaining({
-        alice: { 0: false }
-      }));
-    });
-
-    it('should return Object asype of searchResult4', 
-      () => {
-      expect(searchForPartyInNews instanceof Object).toBeTruthy();
-    });
-
-    it('should match searchForPartyInNews with  party: { 0: true, 5: true }', 
-      () => {
-      expect(searchForPartyInNews.News).toEqual(jasmine.objectContaining({
-        party: { 0: true, 5: true }
-      }));
-    });
-    });
-
-    describe('the inverted index getIndex method', () => {
-      const getCorrectBookIndex = invertedIndex.getIndex('Book')
-      const getEmptyIndex = invertedIndex.getIndex()
-      it('should return object as typeof getCorrectBookIndex', () => {
-        expect(getCorrectBookIndex instanceof Object).toBeTruthy();
-      }); 
-
-      it('should return false for getEmptyIndex', () => {
-        expect(getEmptyIndex).toBeFalsy();
-      }); 
-    });
-
-    describe('the inverted index validate method', () => {
-
-      const emptyFileContent = invertedIndex.isValid(empty);
-      const correctFileContent = invertedIndex.isValid(Book[0]);
-      
-      it('should return false for an empty json file', () => {
-        expect(emptyFileContent).toBeFalsy();
+        expect(searchForAliceInBook.book).not.toEqual(jasmine.objectContaining({
+          alice: { 0: false }
+        }));
       });
 
-      it('should return true for correctFileContent', () => {
-        expect(correctFileContent).toBeTruthy();
-      }); 
+    it('should return Object asype of searchResult4',
+      () => {
+        expect(searchForPartyInNews instanceof Object).toBeTruthy();
+      });
+
+    it('should match searchForPartyInNews with  party: { 0: true, 5: true }',
+      () => {
+        expect(searchForPartyInNews.News).toEqual(jasmine.objectContaining({
+          party: { 0: true, 5: true }
+        }));
+      });
+  });
+
+  describe('the inverted index getIndex method', () => {
+    const getCorrectBookIndex = invertedIndex.getIndex('book');
+    const getEmptyIndex = invertedIndex.getIndex();
+    it('should return object as typeof getCorrectBookIndex', () => {
+      expect(getCorrectBookIndex instanceof Object).toBeTruthy();
+    });
+
+    it('should return false for getEmptyIndex', () => {
+      expect(getEmptyIndex).toBeFalsy();
     });
   });
+
+  describe('the inverted index validate method', () => {
+    const emptyFileContent = invertedIndex.isValid(empty);
+    const correctFileContent = invertedIndex.isValid(book[0]);
+
+    it('should return false for an empty json file', () => {
+      expect(emptyFileContent).toBeFalsy();
+    });
+
+    it('should return true for correctFileContent', () => {
+      expect(correctFileContent).toBeTruthy();
+    });
+  });
+});
