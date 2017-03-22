@@ -1,13 +1,15 @@
+/* eslint-disable */
 window.onload = function() {
   const invertedObj = new InvertedIndex();
   const fileInput = document.getElementById('file');
   const wrongFiles = [];
-  const wrnMessage = '  Invalid file upload';
+  const wrnMessage = '  is not a JSON File';
   const files = [];
   const input = $('#file');
   const allFilesTile = invertedObj.allFilesTitle;
   const dropDownNames = [];
   const register = [];
+  const passedFiles = {};
 
   /**
    * File reader function
@@ -16,48 +18,50 @@ window.onload = function() {
    * @returns {Boolean} return true or false for file structure
    */
   const jsonFileReader = (file, arg) => {
-    let object = [];
-    let object1 = [];
+    let readFile = [];
+    let validatedFile = {};
     try {
       let reader = new FileReader();
       reader.onload = (e) => {
-        object = JSON.parse(e.target.result);
-        document.getElementById('user-message1').innerHTML = '';
-        document.getElementById('user-message').innerHTML = '';
-        if (object[0].title === undefined) {
-          document.getElementById('user-message').innerHTML = 'Invalid Json file format';
-          return false;
+        try {
+          readFile = JSON.parse(e.target.result);
+        } catch (error) {
+          document.getElementById('user-message').innerHTML = file.name + ' is an invalid JSON file format';
         }
-        if (object[0].title !== undefined && register.indexOf(file.name) === -1) {
-          document.getElementById('user-message1').innerHTML = 'File Upload was successful';
-          arg.createIndex(object, file.name);
-          register.push(file.name);
-          dropDownNames.push(file);
-          populateDropDown(file.name);
-          return true;
-          return arg.index;
-        } document.getElementById('user-message').innerHTML = 'File Exist';
+        validatedFile = invertedObj.isValid(readFile[0]);
+        document.getElementById('user-message').innerHTML = '';
+        document.getElementById('user-message1').innerHTML = '';
+        if(validatedFile !== false) {
+          if(register.indexOf(file.name) === -1) {
+            passedFiles[file.name] = readFile;
+            register.push(file.name);
+            populateDropDown(file.name);
+            document.getElementById('user-message1').innerHTML = file.name + ' File Upload was successful';
+          } else if(register.indexOf(file.name) !== -1) {
+            document.getElementById('user-message').innerHTML = file.name + ' File Exist';
+          }
+        } else {
+          document.getElementById('user-message').innerHTML = file.name + ' is an invalid JSON file format';
+        }
       }
       reader.readAsText(file);
     } catch (error) {
+      document.getElementById('user-message').innerHTML = file.name + ' is an invalid file format';
       return false;
-      document.getElementById('user-message').innerHTML = 'Invalid Json file format';
     }
   };
 
   $('#upload-btn').click(() => {
       Object.keys(fileInput.files).forEach((file) => {
-        if(fileInput.files[file].type === 'application/json' && fileInput.files[file].size < 1) {
-          wrongFiles.push(fileInput.files.name);
+        if(fileInput.files[file].type === 'application/json' && fileInput.files[file].size === 0) {
           document.getElementById('user-message').innerHTML
-          = wrongFiles + wrnMessage;
+          = fileInput.files[file].name + 'is an empty JSON file';
         } if (fileInput.files[file].type === 'application/json') {
           files.push(fileInput.files[file]);
           jsonFileReader(fileInput.files[file], invertedObj);
         } else if (fileInput.files[file].name !== 'application/json') {
-          wrongFiles.push(fileInput.files.name);
           document.getElementById('user-message').innerHTML
-          = wrongFiles + wrnMessage;
+          = fileInput.files[file].name + wrnMessage;
         }
       });
     input.replaceWith(input.val(''));
@@ -68,13 +72,22 @@ window.onload = function() {
     const bookName = $('#sFile').val();
     document.getElementById('user-message').innerHTML = '';
     document.getElementById('user-message1').innerHTML = '';
-    let viewIndexFiles = invertedObj.allFiles;
-    let viewIndexLength = invertedObj.allLength;
     if (bookName === 'All') {
-      document.getElementById('user-message').innerHTML = 'No book selected';
+      document.getElementById('user-message').innerHTML = 'No file selected';
     } else {
-      populateTable(viewIndexFiles[bookName],
-      bookName, viewIndexLength[bookName], allFilesTile);
+      let allIndicies = invertedObj.getIndex(bookName);
+      if(allIndicies === undefined) {
+        invertedObj.createIndex(passedFiles[bookName], bookName);
+        let allIndicies = invertedObj.getIndex(bookName);
+        let bookLength = invertedObj.allLength[bookName]
+        let allBooksTitles = invertedObj.allFilesTitle
+        populateTable(allIndicies, bookName, bookLength, allBooksTitles);
+      } else {
+        document.getElementById('user-message').innerHTML = file.name + ' Index created already';
+        let bookLength = invertedObj.allLength[bookName]
+        let allBooksTitles = invertedObj.allFilesTitle
+        populateTable(allIndicies, bookName, bookLength, allBooksTitles);
+      }
     }
   });
 
@@ -137,8 +150,8 @@ window.onload = function() {
    * function
    */
   const deleteTable = () => {
-      $("#table-holder").remove();
-      $('figure').append('<div class="display table well" id="table-holder"></div>');
+      $('#table-holder').remove();
+      $('figure').append('<div class="display table" id="table-holder"></div>');
   }
 
   const populateDropDown = (fileName) => {
