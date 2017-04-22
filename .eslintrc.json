@@ -5,7 +5,7 @@
     "node": true,
     "es6": true,
     "jasmine": true,
-    "browser": true 
+    "browser": true
   },
   "rules": {
     "max-len":[2, 80, 2],
